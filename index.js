@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Route to generate QR code dynamically for a URL
-app.get('/generate', async (req, res) => {
+app.get('/', async (req, res) => {
   const url = 'https://enchanting-pika-b4bf8f.netlify.app/'; // Change this to your target URL
   try {
     const qrImage = await QRCode.toDataURL(url);
@@ -16,9 +16,9 @@ app.get('/generate', async (req, res) => {
 });
 
 // When the QR is scanned, this route (if accessed) redirects to your website
-app.get('/', (req, res) => {
-  res.redirect('https://enchanting-pika-b4bf8f.netlify.app/');
-});
+// app.get('/', (req, res) => {
+//   res.redirect('https://enchanting-pika-b4bf8f.netlify.app/');
+// });
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
